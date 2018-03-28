@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0 0;
+            padding: 0 0;
+        }
+        body{
+            background: #000000;
+        }
+        table{
+            margin: 0 auto;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        td{
+            border: 1px solid #dddddd;
+            width: 40px;
+            height: 40px;
+        }
+        table tr:first-child td,table tr td:first-child{
+            border: none;
+            text-align: center;
+        }
+        table tr:nth-of-type(2) td{
+            border-top: 2px solid #000000;
+        }
+        table tr td:last-child{
+            border-right: 2px solid #000000;
+        }
+        table tr:last-child td{
+            border-bottom: 2px solid #000000;
+        }
+        table tr td:nth-of-type(2){
+            border-left: 2px solid #000000;
+        }
+        #container{
+            width: 600px;
+            height: 600px;
+            background: #ffffff;
+            margin: 0 auto;
+        }
+        button{
+            width: 80px;
+            height: 30px;
+            border: none;
+            background: #cc8091;
+            border-radius: 8px;
+            margin-top: 3px;
+        }
+        #control{
+            margin: 20px 120px;
+        }
+        #mario{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: all .5s;
+        }
+        #mario #mario-head{
+            width: 100%;
+            height: 10px;
+            background: #f0ad4e;
+        }
+        #mario #mario-body{
+            width: 100%;
+            height: 30px;
+            background: #b2dba1;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+<table>
+    <tr>
+        <td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+        <td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>
+            <div id="mario" style="transform: rotate(0deg);top: 0;left: 0">
+                <div id="mario-head"></div>
+                <div id="mario-body"></div>
+            </div>
+        </td>
+        <td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>2</td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>3</td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>4</td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>5</td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>6</td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>7</td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>8</td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>9</td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>10</td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+</table>
+<div id="control">
+    <button id="go">GO!</button>
+    <button id="left">TUN LEFT</button>
+    <button id="right">TUN RIGHT</button>
+    <button id="back">TUN BACK</button>
+    <button id="tralef">TRA LEF</button>
+    <button id="trarig">TRA RIG</button>
+    <button id="tratop">TRA TOP</button>
+    <button id="trabot">TRA BOT</button>
+    <button id="movlef">MOV LET</button>
+    <button id="movrig">MOV RIG</button>
+    <button id="movtop">MOV TOP</button>
+    <button id="movbot">MOV BOT</button>
+</div>
+</div>
+<script>
+    function $(id) {
+        return document.getElementById(id);
+    }
+    /*设置元素旋转角度*/
+    function angle(element,ang) {
+        //获取元素旋转角度
+        if(arguments.length === 1){
+            var t = element.style.transform;
+            t = t.substring(7,t.length);
+            t = parseInt(t);
+            return t;
+        }
+        //设置元素旋转
+        if(arguments.length === 2){
+            element.style.transform = "rotate(" + ang + "deg)";
+            return;
+        }
+    }
+    function turngo() {
+        var angleNow = angle($("mario"));
+        angleNow = angleNow % 360;
+        angleNow = angleNow >= 0 ? angleNow : angleNow + 360;
+
+        var top = parseInt($("mario").style.top);
+        var left = parseInt($("mario").style.left);
+        if(angleNow == 0 || angleNow == 360){
+            if(top > 0){
+                $("mario").style.top = (top - 41) + "px";
+            }
+        }
+        if(angleNow == 90){
+            if(left < 369){
+                $("mario").style.left = (left + 41) + "px";
+            }
+        }
+        if(angleNow ==180){
+            if(top < 369){
+                $("mario").style.top = (top + 41) + "px";
+            }
+        }
+        if(angleNow == 270){
+            if(left > 0){
+                $("mario").style.left = (left - 41) + "px";
+            }
+        }
+
+    }
+    function go(dir) {
+        var top = parseInt($("mario").style.top);
+        var left = parseInt($("mario").style.left);
+        switch (dir){
+            case "lef":
+                if(left > 0){
+                    $("mario").style.left = (left - 41) + "px";
+                }break;
+            case "rig":
+                if(left < 369){
+                    $("mario").style.left = (left + 41) + "px";
+                }break;
+            case "top":
+                if(top > 0){
+                    $("mario").style.top = (top - 41) + "px";
+                }break;
+            case "bot":
+                if(top < 369){
+                    $("mario").style.top = (top + 41) + "px";
+                }break;
+            default:
+                break;
+        }
+    }
+    //仅移动
+    function move() {
+        var dir = this.getAttribute("id").split("v")[1];
+        go(dir);
+    }
+    //移动并旋转
+    function trace() {
+        var dir = this.getAttribute("id").split("a")[1];
+        var block = $("mario");
+        switch (dir){
+            case "lef":
+                angle(block,270);
+                go(dir);
+                break;
+            case "rig":
+                angle(block,90);
+                go(dir);
+                break;
+            case "top":
+                angle(block,0);
+                go(dir);
+                break;
+            case "bot":
+                angle(block,180)
+                go(dir);
+                break;
+            default:
+                break;
+        }
+    }
+    /*function turnleft() {
+        var e = $("mario");
+        var deg = angle(e)-90;
+        angle(e,deg);
+    }
+    function turnright() {
+        var e = $("mario");
+        var deg = angle(e)+90;
+        angle(e,deg);
+    }
+    function turnback() {
+        var e = $("mario");
+        var deg = angle(e)+180;
+        angle(e,deg);
+    }*/
+    function turn(direct) {
+        var e = $("mario");
+        var deg;
+        switch(direct){
+            case "left":
+                deg = angle(e)-90;break;
+            case "right":
+                deg = angle(e)+90;break;
+            case "back":
+                deg = angle(e)+180;break;
+            default:
+                break;
+        }
+        angle(e,deg);
+    }
+    function trigger() {
+
+        $("go").onclick = turngo;
+        $("left").onclick = function () {turn("left");};
+        $("right").onclick = function () {turn("right");};
+        $("back").onclick = function () {turn("back");};
+
+        $("movlef").onclick = move;
+        $("movrig").onclick = move;
+        $("movtop").onclick = move;
+        $("movbot").onclick = move;
+
+        $("tralef").onclick = trace;
+        $("trarig").onclick = trace;
+        $("tratop").onclick = trace;
+        $("trabot").onclick = trace;
+    }
+    window.onload = trigger;
+</script>
+</body>
+</html>

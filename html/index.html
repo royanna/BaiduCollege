@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="../bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script type="text/javascript" src="../bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <script>
+        $(document).ready(function(){
+            $('#myCarousel').carousel({interval:3000});
+            $(".time_row").hover(function () {
+                $(".turn_left").css({"display":"block"});
+                $(".turn_right").css({"display":"block"});
+            },function () {
+                $(".turn_left").css({"display":"none"});
+                $(".turn_right").css({"display":"none"});
+            });
+        });
+
+    </script>
+</head>
+<body>
+<!--顶部导航开始-->
+<div id="nav_head">
+    <div class="head_center">
+        <div class="head_left pull-left">
+            <div class="city">
+                <p>大连&nbsp;</p>
+                <a href="#">[切换城市]</a>
+            </div>
+            <div class="weather">
+                <ul class="list-unstyled list-inline">
+                    <li><img src="../image/sun.png" alt="a sun"></li>
+                    <li>晴 15~4℃</li>
+                    <li>优</li>
+                </ul>
+            </div>
+        </div>
+        <div class="head_right pull-right">
+            <div class="list_one">
+                <a href="">登陆</a>/
+                <a href="">注册</a>
+            </div>
+            <div class="list_one">
+                <p>个人中心</p><div class="back_img"></div>
+            </div>
+            <div class="list_one">
+                <p>商家中心</p><div class="back_img"></div>
+            </div>
+            <div class="list_one">
+                <p>帮助中心</p><div class="back_img"></div>
+            </div>
+            <div class="list_one">
+                <p>最近浏览</p><div class="back_img"></div>
+            </div>
+            <div class="list_one">
+                <p>网站导航</p><div class="back_img"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--顶部导航结束-->
+<div id="ad"></div>
+<!--主体所有内容-->
+<div id="contain">
+    <!--搜索栏开始-->
+    <div class="search">
+        <div class="logo_l">
+            <img class="img-responsive" src="../image/logo-o.png" alt="a logo">
+        </div>
+        <div class="logo_p">
+            <img class="img-responsive" src="../image/logo-p.png" alt="a logo">
+        </div>
+        <div class="search_center">
+            <form action="#" role="form" class="bs-example bs-example-form">
+                <div class="input-group">
+                    <input type="text" class="form-control sea">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default sea_btn">搜&nbsp;索</button>
+                    </span>
+                </div>
+            </form>
+            <ul class="list-unstyled list-inline">
+                <li><a href="">充话费</a></li>
+                <li><a href="">大连租房子</a></li>
+                <li><a href="">日租房</a></li>
+                <li><a href="">兼职</a></li>
+                <li><a href="">电信</a></li>
+                <li><a href="">急速招聘</a></li>
+                <li><a href="">车质量查询</a></li>
+                <li><a href="">装修公司</a></li>
+                <li><a href="">同城租车</a></li>
+                <li><a href="">家教老师</a></li>
+            </ul>
+        </div>
+        <div class="right_btn pull-right">
+            <button type="button" class="btn btn-default btn-lg right_btnt">免费发布信息</button>
+            <br><a href="">修改/删除信息</a>
+        </div>
+    </div>
+    <!--搜索栏结束-->
+    <!--导航栏开始-->
+    <div id="nav_main">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#">首页</a></li>
+            <li class="dropdown">
+                <div class="phone"></div>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">58APP
+                    <div class="logo_app pull-right"></div>
+                </a>
+               <!-- <ul class="dropdown-menu">
+                    <li>打开后的内容</li>
+                </ul>-->
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">商家APP
+                    <div class="logo_app pull-right"></div>
+                </a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">58公众号
+                    <div class="logo_app pull-right"></div>
+                </a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">小程序
+                    <div class="logo_app pull-right"></div>
+                </a>
+            </li>
+            <li><a href="">金融</a></li>
+            <li><a href="" class="nav_p">安居客</a></li>
+            <li><a href="" class="nav_p">中华英才</a></li>
+            <li><a href="" class="nav_p">58车</a></li>
+            <li><a href="" class="nav_p">58同镇</a></li>
+            <li class="pull-right" style="font-size: smaller;font-weight: 100"><a href="">我要推广</a></li>
+        </ul>
+    </div>
+    <!--导航栏结束-->
+    <!--轮播图区域开始-->
+    <div id="index_main">
+        <!--轮播图左侧开始-->
+        <div class="main_left pull-left">
+            <ul class="list-unstyled">
+                <li><a href="">家用电器</a></li>
+                <li>
+                    <a href="">手机</a><span>&nbsp;/&nbsp;</span><a href="">运营商</a><span>&nbsp;/&nbsp;</span><a href="">数码</a>
+                </li>
+                <li>
+                    <a href="">电脑</a><span>&nbsp;/&nbsp;</span><a href="">办公</a>
+                </li>
+                <li>
+                    <a href="">家居</a><span>&nbsp;/&nbsp;</span><a href="">家具</a><span>&nbsp;/&nbsp;</span><a href="">家装</a>
+                    <span>&nbsp;/&nbsp;</span><a href="">厨具</a>
+                </li>
+                <li>
+                    <a href="">男装</a><span>&nbsp;/&nbsp;</span><a href="">女装</a><span>&nbsp;/&nbsp;</span><a href="">童装</a>
+                    <span>&nbsp;/&nbsp;</span><a href="">内衣</a>
+                </li>
+                <li>
+                    <a href="">美妆个护</a><span>&nbsp;/&nbsp;</span><a href="">宠物</a>
+                </li>
+                <li>
+                    <a href="">女鞋</a><span>&nbsp;/&nbsp;</span><a href="">箱包</a><span>&nbsp;/&nbsp;</span><a href="">钟表</a>
+                    <span>&nbsp;/&nbsp;</span><a href="">珠宝</a>
+                </li>
+                <li>
+                    <a href="">男鞋</a><span>&nbsp;/&nbsp;</span><a href="">运动</a><span>&nbsp;/&nbsp;</span><a href="">户外</a>
+                </li>
+                <li>
+                    <a href="">汽车</a><span>&nbsp;/&nbsp;</span><a href="">汽车用品</a>
+                </li>
+                <li>
+                    <a href="">母婴</a><span>&nbsp;/&nbsp;</span><a href="">玩具乐器</a>
+                </li>
+                <li>
+                    <a href="">食品</a><span>&nbsp;/&nbsp;</span><a href="">酒类</a><span>&nbsp;/&nbsp;</span><a href="">生鲜</a>
+                    <span>&nbsp;/&nbsp;</span><a href="">特产</a>
+                </li>
+                <li>
+                    <a href="">礼品鲜花</a><span>&nbsp;/&nbsp;</span><a href="">农资绿植</a>
+                </li>
+                <li>
+                    <a href="">医药</a><span>&nbsp;/&nbsp;</span><a href="">玩具乐器</a>
+                </li>
+                <li>
+                    <a href="">图书</a><span>&nbsp;/&nbsp;</span><a href="">音像</a><span>&nbsp;/&nbsp;</span><a href="">电子书</a>
+                </li>
+                <li>
+                    <a href="">机票</a><span>&nbsp;/&nbsp;</span><a href="">酒店</a><span>&nbsp;/&nbsp;</span><a href="">旅游</a>
+                    <span>&nbsp;/&nbsp;</span><a href="">生活</a>
+                </li>
+                <li>
+                    <a href="">理财</a><span>&nbsp;/&nbsp;</span><a href="">众筹</a><span>&nbsp;/&nbsp;</span><a href="">白条</a>
+                    <span>&nbsp;/&nbsp;</span><a href="">保险</a>
+                </li>
+            </ul>
+        </div>
+        <!--轮播图左侧结束-->
+        <!--轮播图主体开始-->
+        <div class="main_center">
+        <div id="myCarousel" class="main_top carousel slide">
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+                <li data-target="#myCarousel" data-slide-to="4"></li>
+                <li data-target="#myCarousel" data-slide-to="5"></li>
+                <li data-target="#myCarousel" data-slide-to="6"></li>
+                <li data-target="#myCarousel" data-slide-to="7"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="../image/lunbo1.jpg" alt="first slide">
+                </div>
+                <div class="item">
+                    <img src="../image/lunbo2.jpg" alt="first slide">
+                </div>
+                <div class="item">
+                    <img src="../image/lunbo3.jpg" alt="first slide">
+                </div>
+                <div class="item">
+                    <img src="../image/lunbo4.jpg" alt="first slide">
+                </div>
+                <div class="item">
+                    <img src="../image/lunbo5.jpg" alt="first slide">
+                </div>
+                <div class="item">
+                    <img src="../image/lunbo6.jpg" alt="first slide">
+                </div>
+                <div class="item">
+                    <img src="../image/lunbo7.jpg" alt="first slide">
+                </div>
+                <div class="item">
+                    <img src="../image/lunbo8.jpg" alt="first slide">
+                </div>
+            </div>
+            <a href="#myCarousel" class="carousel-control left" data-slide="prev">&lsaquo;</a>
+            <a href="#myCarousel" class="carousel-control right" data-slide="next">&rsaquo;</a>
+        </div>
+        <div class="main_bottom">
+            <div class="bottom_left pull-left">
+                <img src="../image/lunbo9.jpg" alt="">
+            </div>
+            <div class="bottom_right pull-right">
+                <img src="../image/lunbo10.jpg" alt="">
+            </div>
+        </div>
+    </div>
+        <!--轮播图主体结束-->
+        <!--轮播图右侧开始-->
+        <div class="main_right pull-right">
+            <div class="media">
+                <a class="media-left" href="#">
+                    <img class="media-object img-circle img-responsive" src="../image/photo.jpg" alt="">
+                </a>
+                <div class="media-right">
+                    <p>Hi!欢迎来到京东！</p>
+                    <a href="">登陆</a>
+                    <a href="">注册</a>
+                </div>
+            </div>
+            <button class="btn btn-default btn_one">新人福利</button>
+            <button class="btn btn-default btn_one">PLUS会员</button>
+            <hr>
+            <div class="tables">
+                <table class="table table-responsive">
+                    <tr>
+                        <td>
+                            <div class="right_logo"></div>
+                            <p>话费</p>
+                        </td>
+                        <td>
+                            <div class="right_logo"></div>
+                            <p>机票</p>
+                        </td>
+                        <td>
+                            <div class="right_logo"></div>
+                            <p>酒店</p>
+                        </td>
+                        <td>
+                            <div class="right_logo"></div>
+                            <p>游戏</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="right_logo"></div>
+                            <p>企业购</p>
+                        </td>
+                        <td>
+                            <div class="right_logo"></div>
+                            <p>加油卡</p>
+                        </td>
+                        <td>
+                            <div class="right_logo"></div>
+                            <p>电影票</p>
+                        </td>
+                        <td>
+                            <div class="right_logo"></div>
+                            <p>火车票</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="right_logo"></div>
+                            <p>众筹</p>
+                        </td>
+                        <td>
+                            <div class="right_logo"></div>
+                            <p>理财</p>
+                        </td>
+                        <td>
+                            <div class="right_logo"></div>
+                            <p>礼品卡</p>
+                        </td>
+                        <td>
+                            <div class="right_logo"></div>
+                            <p>白条</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!--轮播图右侧结束-->
+    </div>
+    <!--轮播图区域结束-->
+    <!--倒计时广告开始-->
+    <div id="time">
+        <div class="pull-left">
+            <div class="timer"></div>
+            <h3>京东秒杀</h3>
+        </div>
+        <div class="time_go pull-right">
+            <p>当前场次&nbsp;</p>
+            <div class="mytime"><p>01</p></div><span>:</span>
+            <div class="mytime"><p>56</p></div><span>:</span>
+            <div class="mytime"><p>59</p></div>
+            <p>&nbsp;后结束抢购</p>
+        </div>
+        <div class="row time_row">
+            <div class="col-lg-2 col-sm-2 col-md-2 a">
+                <div class="time_img">
+                    <img src="../image/shop1.jpg" alt="a shop">
+                </div>
+                <p class="time_info">展卉 百香果西番莲 12个装 单果50-80g 新鲜水果</p>
+                <h4 class="pull-left">￥18.8</h4>
+                <p class="time_money">￥29.90</p>
+            </div>
+            <div class="col-lg-2 col-sm-2 col-md-2 a">
+                <div class="time_img">
+                    <img src="../image/shop2.jpg" alt="a shop">
+                </div>
+                <p class="time_info">华硕(ASUS) 灵耀U4000UQ 14英寸超窄边框轻薄笔记本电脑(i5</p>
+                <h4 class="pull-left">￥18.8</h4>
+                <p class="time_money">￥29.90</p>
+            </div>
+            <div class="col-lg-2 col-sm-2 col-md-2 a">
+                <div class="time_img">
+                    <img src="../image/shop3.jpg" alt="a shop">
+                </div>
+                <p class="time_info">獐子岛 冷冻蒜蓉粉丝扇贝 400g 12只 袋装 海鲜水产</p>
+                <h4 class="pull-left">￥18.8</h4>
+                <p class="time_money">￥29.90</p>
+            </div>
+            <div class="col-lg-2 col-sm-2 col-md-2 a">
+                <div class="time_img">
+                    <img src="../image/shop4.jpg" alt="a shop">
+                </div>
+                <p class="time_info">得力(deli)0.5mm黑色直液式走珠签字笔学生考试中性笔 12支/</p>
+                <h4 class="pull-left">￥18.8</h4>
+                <p class="time_money">￥29.90</p>
+            </div>
+            <div class="col-lg-2 col-sm-2 col-md-2 a" style="border: hidden">
+                <div class="time_img">
+                    <img src="../image/shop5.jpg" alt="a shop">
+                </div>
+                <p class="time_info">德青源 爱的鲜鸡蛋 32枚 褐壳蛋</p>
+                <h4 class="pull-left">￥18.8</h4>
+                <p class="time_money">￥29.90</p>
+            </div>
+            <div class="col-lg-2 col-sm-2 col-md-2 a">
+                <div id="myCarousel2" class="carousel slide">
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel2" data-slide-to="1"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="../image/smalllunbo1.jpg" alt="first slide">
+                        </div>
+                        <div class="item">
+                            <img src="../image/smalllunbo2.jpg" alt="first slide">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="turn_left"></a>
+            <a href="#" class="turn_right"></a>
+        </div>
+    </div>
+</div>
+<!--主体部分结束-->
+</body>
+</html>

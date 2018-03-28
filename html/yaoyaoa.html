@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            margin: 0 auto;
+        }
+        input{
+            width: 280px;
+            height: 30px;
+            border-radius: 8px;
+            border: 1px solid #9d9d9d;
+        }
+        button{
+            width: 60px;
+            height: 30px;
+            background-color: #2b669a;
+            border: none;
+            border-radius: 8px;
+            color: white;
+        }
+        span{
+            color: gray;
+        }
+        .pass{
+            color: seagreen;
+        }
+        .passin{
+            border: 1px solid seagreen;
+        }
+        .fail{
+            color: red;
+        }
+        .failin{
+            border: 1px solid red;
+        }
+        /*获得焦点*/
+        .foc{
+            border: 2px solid #2b669a;
+        }
+        /*失去焦点*/
+        .blur{
+            border: 1px solid #9d9d9d;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <td>名称</td>
+        <td><input id="in" type="text"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span id="sin"></span></td>
+    </tr>
+    <tr>
+        <td>密码</td>
+        <td><input id="psw" type="password"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span id="spsw"></span></td>
+    </tr>
+    <tr>
+        <td>确认密码</td>
+        <td><input id="repsw" type="password"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span id="srepsw"></span></td>
+    </tr>
+    <tr>
+        <td>邮箱</td>
+        <td><input id="mail" type="text"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span id="smail"></span></td>
+    </tr>
+    <tr>
+        <td>手机</td>
+        <td><input id="phone" type="text"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span id="sphone"></span></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td style="text-align: right"><button id="btn">提交</button></td>
+    </tr>
+
+    <script>
+        var btn = document.getElementById("btn");
+        var inp = document.getElementById("in");
+        var p = document.getElementById("sname");
+
+
+        /*计算字符串长度*/
+        function len(str) {
+            str = trim(str);
+            var l = 0;
+            for(var i=0;i<str.length;i++){
+                if(str.charCodeAt(i)>=0x4e00 && str.charCodeAt(i)<=0x9fbb){
+                    l+=2;
+                }
+                else {
+                    l+=1;
+                }
+            }
+            return l;
+        }
+        /*去掉字符串左右两边空格*/
+        function trim(str) {
+            return str.replace(/(^\s*)|(\s*$)/,"");
+        }
+        /*各情况下提示*/
+        function match(inputid,n) {
+            var tip_content = "";
+            var error_content = "";
+            var empty_content = "";
+            var correct_content = "";
+            switch(inputid){
+                case "in":
+                    tip_content = "长度为4-16个字符，1个汉字为2个字符";
+                    error_content = "名称格式错误";
+                    empty_content = "名称不能为空";
+                    correct_content = "名称可用";
+                    break;
+                case "psw":
+                    tip_content = "数字和字母结合，长度为6到20个字符";
+                    error_content = "密码长度出错";
+                    empty_content = "密码不能为空";
+                    correct_content = "密码可用";
+                    break;
+                case "repsw":
+                    tip_content = "再次输入相同密码";
+                    error_content = "密码输入不一致";
+                    empty_content = "不能为空";
+                    correct_content = "密码输入一致";
+                    break;
+                case "mail":
+                    tip_content = "请输入邮箱地址";
+                    error_content = "邮箱格式错误";
+                    empty_content = "不能为空";
+                    correct_content = "邮箱格式正确";
+                    break;
+                case "phone":
+                    tip_content = "请输入11位手机号码";
+                    error_content = "手机号码格式错误";
+                    correct_content = "手机号码格式正确";
+                    break;
+                default:
+                    return false;
+            }
+            var arr = [tip_content,error_content,empty_content,correct_content];
+            return arr[n];
+        }
+        /*获得焦点*/
+        function checkFocus(inputId) {
+            var e = document.getElementById(inputId);
+            var t = document.getElementById("s"+inputId);
+            e.onfocus = function () {
+                e.className = "foc";
+                t.innerHTML = match(inputId,0);
+            }
+        }
+        /*名字表单失去焦点*/
+        function checkInBlur() {
+            var self = document.getElementById("in");
+            var sign = document.getElementById("sin");
+            self.className = "blur";
+            var text = self.value;
+            if(text.length == 0){
+                sign.innerHTML = match("in",2);
+                sign.className = "fail";
+                self.style.border = "1px soild red";
+            }
+            else {
+                if(len(text)>=4 && len(text)<=16){
+                    sign.innerHTML = match("in",3);
+                    sign.className = "pass";
+                    self.className = "passin";
+                }
+                else {
+                    sign.innerHTML = match("in",1);
+                    sign.className = "fail";
+                    self.className = "failin";
+                }
+            }
+        }
+
+        window.onload = function () {
+            checkFocus("in");
+            checkFocus("psw");
+            checkFocus("repsw");
+            checkFocus("mail");
+            checkFocus("phone");
+            document.getElementById("in").onblur = checkInBlur;
+            document.getElementById("psw").onblur = checkPswBlur;
+            document.getElementById("repsw").onblur = checkRepswBlur;
+            document.getElementById("mail").onblur = checkMailBlur;
+            document.getElementById("phone").onblur = checkPhoneBlur;
+        }
+        /*btn.addEventListener("click",function () {
+            var text = document.getElementById("in").value;
+            if(text.length == 0){
+                p.innerHTML = "输入不能为空";
+                p.className = "fail";
+                document.getElementById("in").style.border = "1px soild red";
+            }
+            else {
+                if(len(text)>=4 && len(text)<=16){
+                    p.innerHTML = "验证通过";
+                    p.className = "pass";
+                    inp.className = "passin";
+                }
+                else {
+                    p.innerHTML = "请检查字符长度";
+                    p.className = "fail";
+                    inp.className = "failin";
+                }
+            }
+        });*/
+
+    </script>
+</table>
+</body>
+</html>

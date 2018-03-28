@@ -1,0 +1,154 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span{
+            width: 40px;
+            height: 40px;
+            background: #cc8091;
+        }
+    </style>
+</head>
+<body>
+<form action="">
+    <input type="text" id="in">
+    <button id="btn1">左侧入</button>
+    <button id="btn2">右侧入</button>
+    <button id="btn3">左侧出</button>
+    <button id="btn4">右测出</button>
+</form>
+<div id="div">
+    <span>15</span>
+    <span>25</span>
+    <span>35</span>
+</div>
+<script>
+    var input = document.getElementById("in");
+    var div = document.getElementById("div");
+    var group = document.getElementById("div").getElementsByTagName("span");
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    var btn3 = document.getElementById("btn3");
+    var btn4 = document.getElementById("btn4");
+    btn1.addEventListener("click",function () {
+        var span = document.createElement("span");
+        span.innerHTML = input.value;
+        div.insertBefore(span,div.childNodes[0]);
+    });
+    btn2.addEventListener("click",function () {
+        var span = document.createElement("span");
+        span.innerHTML = input.value;
+        div.appendChild(span);
+    });
+    btn3.addEventListener("click",function () {
+        var num = group[0].innerText;
+        alert("将要删除："+num);
+        group[0].remove();
+    });
+    btn4.addEventListener("click",function () {
+        var len = group.length;
+        var num = group[len-1].innerText;
+        alert("将要删除："+num);
+        group[len-1].remove();
+    });
+    div.addEventListener('click',function(e){
+        if(e.target.nodeName.toLowerCase() == 'span'){
+            div.removeChild(e.target);
+        }
+    });
+</script>
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>基础JavaScript练习（一）</title>
+</head>
+<body>
+<section class="wrap">
+    <div><label>输入一个数字：</label><input type="" name="" class="num_input" id="num_input"></div>
+    <div class="btn_group">
+        <input type="button" name="" value="左侧入" id="add_left">
+        <input type="button" name="" value="右侧入" id="add_right">
+        <input type="button" name="" value="左侧出" id="dele_left">
+        <input type="button" name="" value="右侧出" id="dele_right">
+    </div>
+    <div class="num" id="num">
+        <span>12</span><span>13</span><span>124</span>
+    </div>
+</section>
+<script type="text/javascript">
+    var numInput = document.getElementById('num_input'); // 输入数据
+    var showNum = document.getElementById('num'); // 数字
+    var numGroup = document.getElementById('num').getElementsByTagName('span'); // 数字集合
+    var addLeft = document.getElementById('add_left'); // 左侧入
+    var addRight = document.getElementById('add_right'); // 右侧入
+    var deleLeft = document.getElementById('dele_left'); // 左侧出
+    var deleRight = document.getElementById('dele_right'); // 右侧出
+    // 验证数字有效性
+    function verifyNum(num){
+        if(isNaN(num)){
+            alert("请输入数字");
+            numInput.value = '';
+            numInput.focus();
+            return false;
+        } else if( numInput.value == undefined || numInput.value == ''){
+            alert("不能为空");
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    // 创建 数字 节点
+    function addNum(i){
+        let dom = document.createElement('span');
+        dom.innerText = i;
+        return dom;
+    }
+    // 左侧入
+    addLeft.addEventListener('click',function(){
+        let data = numInput.value; // 获取数字
+        if(verifyNum(data)){
+            showNum.insertBefore(addNum(data),showNum.childNodes[0]);
+            numInput.value = '';
+            numInput.focus();
+        }
+    });
+    // 右侧入
+    addRight.addEventListener('click',function(){
+        let data = numInput.value; // 获取数字
+        if(verifyNum(data)){
+            showNum.appendChild(addNum(data));
+            numInput.value = '';
+            numInput.focus();
+        }
+    });
+    // 左侧出
+    deleLeft.addEventListener('click',function(){
+        let deleNum = numGroup[0].innerText;
+        alert('将要删除数字：' + deleNum);
+        numGroup[0].remove();
+    });
+    // 右侧出
+    deleRight.addEventListener('click',function(){
+        let len = numGroup.length;
+        let deleNum = numGroup[len-1].innerText;
+        alert('将要删除数字：' + deleNum);
+        numGroup[len-1].remove();
+    });
+    showNum.addEventListener('click',function(e){
+        if(e.target.nodeName.toLowerCase() == 'span'){
+            showNum.removeChild(e.target);
+        }
+    });
+</script>
+</body>
+</html>
+
+
+

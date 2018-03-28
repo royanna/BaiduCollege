@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0 0;
+            padding: 0 0;
+        }
+        body{
+            font-size: 62.5%;
+        }
+        a,p,h2,span{
+            font-family: 宋体;
+        }
+        a{
+            text-decoration: none;
+        }
+        ul{
+            list-style: none;
+        }
+        ul li{
+            float: left;
+        }
+        /*reset end*/
+        #head{
+            width: 100%;
+            color: white;
+        }
+        #head h2{
+            text-align: center;
+            padding-top: 1em;
+            padding-bottom: 1em;
+            background: lightseagreen;
+        }
+        #head h2 a,#head h2 span{
+            color: white;
+        }
+        #head h2 a{
+            background: url("../image/back-11.png") no-repeat left;
+            padding-left: 1em;
+            float: left;
+        }
+        #head nav ul{
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+        #head nav ul li{
+            width: 20%;
+            text-align: center;
+            padding-top: 1em;
+            padding-bottom: 1em;
+        }
+        #head nav ul li a{
+            color: #636363;
+            font-size: 140%;
+            font-weight: bold;
+        }
+        #head nav ul li:hover{
+            border-bottom: 2px solid lightseagreen;
+        }
+        .contain{
+            width: 100%;
+        }
+        .contain .img img{
+            width: 100%;
+        }
+        .columns{
+            width: 95%;
+            border-top: 2px solid gray;
+            margin: 2em auto;
+        }
+        .columns ul{
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+        .columns ul li{
+            text-align: center;
+            width: 30%;
+            height: 30em;
+            margin-top: 4em;
+            margin-bottom: 4em;
+            border-right: 1px solid gray;
+            background: url("../image/bear-column.png") no-repeat center 0px;
+        }
+        .columns ul li h1{
+            margin-top: 5em;
+            font-size: 4em;
+        }
+        .columns ul li h2{
+            font-size: 3em;
+            color: #636363;
+        }
+        .columns ul li:last-child{
+            border: none;
+        }
+        .article{
+
+        }
+        .article header{
+            width: 96%;
+            margin: 0em auto;
+            padding: 2em 0em;
+            border-bottom: 2px solid darkgray;
+        }
+        .article header h1{
+            font-size: 350%;
+            color: #888888;
+        }
+        .article .content{
+            width: 96%;
+            margin: 3em auto;
+        }
+        .article .content .item{
+            width: 100%;
+        }
+        .article .content .item:last-child{
+            margin-top: 3em;
+        }
+        .article .content img{
+            width: 20%;
+            height: 100%;
+            vertical-align: top;
+            display: inline-block;
+        }
+        .article .content ul{
+            width: 75%;
+            margin-left: 2%;
+            vertical-align: top;
+            display: inline-block;
+
+        }
+        .article .content ul li{
+            width: 42%;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            font-size: 260%;
+            background-color: #f8f8f8;
+            color: #888888;
+            margin-left: 5%;
+            display: inline-block;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .article .content .last-li{
+            margin-top: 7%;
+        }
+        section{
+            width: 100%;
+        }
+        section article{
+            width: 100%;
+            position: relative;
+            padding: 1em;
+            overflow: hidden;
+        }
+        section article img{
+            width: 25%;
+            float: left;
+            margin-right: 3em;
+        }
+        section article h2{
+            font-size: 350%;
+            color: #666666;
+        }
+        section article p{
+            position: absolute;
+            font-size: 140%;
+            color: #666666;
+            bottom: 0em;
+            left: 28%;
+            padding-bottom: 1em;
+        }
+/*导航646464*/
+    </style>
+</head>
+<body>
+<header id="head">
+    <h2>
+        <a href="">返回</a>
+        <span>这是标题</span>
+    </h2>
+    <nav>
+        <ul>
+            <li><a href="">导航</a></li>
+            <li><a href="">导航</a></li>
+            <li><a href="">导航</a></li>
+            <li><a href="">导航</a></li>
+            <li><a href="">导航</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="contain">
+    <div class="img">
+        <img src="../image/bear-figure.png" alt="a bear">
+    </div>
+    <div class="columns">
+        <ul>
+            <li>
+                <h1>分栏一</h1>
+                <h2>分栏小标题</h2>
+            </li>
+            <li>
+                <h1>分栏二</h1>
+                <h2>分栏小标题</h2>
+            </li>
+            <li>
+                <h1>分栏三</h1>
+                <h2>分栏小标题</h2>
+            </li>
+        </ul>
+    </div>
+    <article class="article">
+        <header>
+            <h1>模块一</h1>
+        </header>
+        <div class="content">
+            <div class="item">
+                <img src="../image/bear-avatar.png" alt="">
+                <ul>
+                    <li>这是文案</li>
+                    <li>这是文案</li>
+                    <li class="last-li">这是文案</li>
+                    <li class="last-li">这是文案</li>
+                </ul>
+            </div>
+            <div class="item">
+                <img src="../image/bear-avatar.png" alt="">
+                <ul>
+                    <li>这是文案</li>
+                    <li>这是文案</li>
+                    <li class="last-li">这是文案</li>
+                    <li class="last-li">这是文案</li>
+                </ul>
+            </div>
+        </div>
+    </article>
+    <section>
+        <article>
+            <div>
+                <img src="../image/bear-article.png" alt="">
+            </div>
+            <h2>这是文章标题，字号是22的文章标题</h2>
+            <p>文章来源&nbsp;&nbsp;6分钟前</p>
+        </article>
+    </section>
+</div>
+</body>
+</html>

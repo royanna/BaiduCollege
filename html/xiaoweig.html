@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*reset start*/
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #0f0f0f;
+            font-family: "宋体";
+        }
+        a{
+            color: #888888;
+            text-decoration: none;
+        }
+        ul{
+            list-style: none;
+        }
+        .clearfix:before,.clearfix:after{
+            content: '';
+            display: table;
+        }
+        .clearfix:after{
+            clear: both;
+        }
+        /*reset end*/
+        .container{
+            position: relative;
+            margin: 0 auto;
+            width: 1280px;
+            min-width: 1280px;
+            background: #ffffff;
+        }
+        nav header{
+            float: left;
+        }
+        nav header p{
+            width: 120px;
+            font-size: 20px;
+            display: block;
+            text-align: center;
+            line-height: 50px;
+            margin-left: 40px;
+            background: url("../image/new_world.png") no-repeat left;
+        }
+        nav ul{
+            float: right;
+            margin-right: 30px;
+        }
+        nav ul li{
+            float: left;
+            margin-left: 10px;
+            line-height: 50px;
+        }
+        nav ul li a{
+            display: block;
+            width: 70px;
+            height: 50px;
+            text-align: center;
+        }
+        nav ul li:last-child a{
+            background: url("../image/login.png") no-repeat left;
+            color: red;
+        }
+        #main{
+            width: 100%;
+            height: 390px;
+            padding: 150px 80px;
+            background: url("../image/banner.png") no-repeat;
+        }
+        #main .main-content p{
+            color: white;
+            font: 60px Tamoha;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        #main .main-content span{
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #main .main-content button{
+            width: 340px;
+            height: 60px;
+            background-color: #cc8091;
+            border: none;
+            color: white;
+            font-size: 20px;
+            margin-top: 50px;
+        }
+        #ad-info{
+            width: 100%;
+            height: 200px;
+        }
+        #ad-info ul li{
+            float: left;
+            width: 24%;
+            height: 150px;
+            text-align: center;
+            background: url("../image/mainbody1-1.png") no-repeat center 20%;
+        }
+        #ad-info ul li p{
+            color: grey;
+            font-size: 15px;
+            margin-top: 100px;
+            border-right: 2px solid grey;
+        }
+        #info-city{
+            width: 100%;
+            height: 340px;
+            background: url("../image/mainbody3.png") no-repeat;
+        }
+        #info-city .pcity{
+            text-align: center;
+            padding-top: 40px;
+        }
+        #info-city .pcity div{
+            width: 28px;
+            height: 2px;
+            background: white;
+            margin-left: 49%;
+            margin-bottom: 20px;
+        }
+        #info-city h2{
+            color: white;
+            margin-bottom: 8px;
+        }
+        #info-city span{
+            color: white;
+            font-size: small;
+        }
+        #info-city .city-select{
+            width: 1000px;
+            height: 35px;
+            margin: 45px auto;
+        }
+        #info-city .city-select ul li{
+            float: left;
+            width: 25%;
+            height: 35px;
+            text-align: center;
+        }
+        #info-city .city-select ul li select{
+            width: 88%;
+            height: 100%;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background: url("../image/mainbody3-select.png") no-repeat right #ffffff;
+            border: none;
+            color: #888888;
+        }
+        #info-city .city-select ul li button{
+            width: 88%;
+            height: 100%;
+            background: red;
+            color: white;
+            border: none;
+            font-size: medium;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <nav class="clearfix">
+        <header>
+            <p>新世界</p>
+        </header>
+        <ul>
+            <li><a href="">首页</a></li>
+            <li><a href="">最新活动</a></li>
+            <li><a href="">项目介绍</a></li>
+            <li><a href="">爱心社区</a></li>
+            <li><a href="">关于我们</a></li>
+            <li><a href="">登陆</a></li>
+        </ul>
+    </nav>
+    <div id="main">
+        <div class="main-content">
+            <p>Time Of New Life</p>
+            <span>新时代，年轻的人们让我们一起<br>体验新生活，享受新生活</span>
+            <br>
+            <button>开始体验</button>
+        </div>
+    </div>
+    <div id="ad-info">
+        <ul>
+            <li><p>打造全新世界观，让你更<br>爱你的生活</p></li>
+            <li><p>丰富多彩的公益活动，发<br>挥新世界的主人公意识</p></li>
+            <li><p>时尚的新理念，超前体验<br>未知的生活</p></li>
+            <li style="border: none"><p>完善的培养体制，培养你<br>全新的世界观</p></li>
+        </ul>
+    </div>
+    <div id="info-city">
+        <div class="pcity">
+            <h2>查找新世界活动信息</h2>
+            <div></div>
+            <span>每个城市有不同的活动信息，请自助查询你需要了解的城市</span>
+        </div>
+        <div class="city-select">
+            <ul>
+                <li>
+                    <select name="" id="country">
+                        <option value="china">中国</option>
+                    </select>
+                </li>
+                <li>
+                    <select name="" id="province">
+                        <option value="">北京市</option>
+                        <option value="">天津市</option>
+                        <option value="">河北省</option>
+                        <option value="">陕西省</option>
+                        <option value="">内蒙古自治区</option>
+                        <option value="">辽宁省</option>
+                    </select>
+                </li>
+                <li>
+                    <select name="" id="city">
+                        <option value="">大连市</option>
+                    </select>
+                </li>
+                <li>
+                    <button>搜&nbsp;索</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<!--  <div id="mainbody3" class="container">
+            <h2>查找新世界城市活动信息</h2>
+            <p class="line"></p>
+            <p>每个城市的有不同的活动信息，请自主查询您所需要了解的城市</p>
+            <div id="select">
+                <div id="select1" class="box select"><span class="title">中国</span><img src="./images/mainbody3-select.png">
+                    <ul>
+                        <li>韩国</li>
+                        <li>日本</li>
+                        <li>美国</li>
+                        <li>印度</li>
+                        <li>俄罗斯</li>
+                        <li>新加坡</li>
+                    </ul>
+                </div>
+                <div id="select2" class="box select"><span class="title">省份</span><img src="./images/mainbody3-select.png">
+                     <ul>
+                        <li>北京市</li>
+                        <li>山东省</li>
+                        <li>河北省</li>
+                        <li>辽宁省</li>
+                        <li>湖南省</li>
+                        <li>湖北省</li>
+                    </ul>
+                </div>
+                <div id="select3" class="box select"><span class="title">城市</span><img src="./images/mainbody3-select.png">
+                     <ul>
+                        <li>莱州</li>
+                        <li>济南</li>
+                        <li>潍坊</li>
+                        <li>临沂</li>
+                        <li>济宁</li>
+                        <li>莱阳</li>
+                    </ul>
+                </div>
+                <div class="search box">搜索</div>
+            </div>
+</div>-->

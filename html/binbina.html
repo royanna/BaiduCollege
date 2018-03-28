@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+</head>
+<body>
+
+<label>请输入北京今天空气质量：<input id="aqi-input" type="text"></label>
+<button id="button">确认填写</button>
+
+<div>您输入的值是：<span id="aqi-display">尚无录入</span></div>
+
+<script type="text/javascript">
+      (function() {
+        /*
+         在注释下方写下代码
+         给按钮button绑定一个点击事件
+         在事件处理函数中
+         获取aqi-input输入的值，并显示在aqi-display中
+         */
+        var EventUtil = {
+            addHandler: function (element, type, handler) {
+                //若浏览器支持addEventListener，则使用addEventListener来添加事件
+                if (element.addEventListener) {
+                    element.addEventListener(type, handler, false);
+                } else if (element.attachEvent) {
+                    element.attachEvent("on" + type, handler);
+                } else {
+                    //若以上两种添加事件的方法都不支持，则使用默认的行为来添加事件
+                    element["on" + type] = handler;
+                }
+            },
+            //移除事件
+            removeHandler: function (element, type, handler) {
+                if (element.removeEventListener) {
+                    element.removeEventListener(type, handler, false);
+                } else if (element.detachEvent) {
+                    element.detachEvent("on" + type, handler);
+                } else {
+                    element["on" + type] = null;
+                }
+            }
+        };
+        var a = document.getElementById("aqi-input");
+        var b = document.getElementById("button");
+        var c = document.getElementById("aqi-display");
+        var fun = function () {
+            c.innerHTML = a.value;
+        };
+        EventUtil.addHandler(b,'click',fun);
+    })();
+</script>
+</body>
+</html>

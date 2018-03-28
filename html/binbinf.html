@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #img{
+            width: 900px;
+            height: 350px;
+            display: flex;
+            border: 1px solid red;
+            align-items: flex-end;
+        }
+        .boxstyle{
+            width: 30px;
+            background-color: #f0ad4e;
+            float: left;
+            margin-left: 10px;
+            overflow: hidden;
+        }
+        .pstyle{
+            text-align: center;
+            line-height: 10px;
+        }
+        .mark{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="measure">
+    <!--<input id="in" type="text">-->
+    <textarea id="in" cols="30" rows="10"></textarea>
+    <button id="btn1">左侧出</button>
+    <button id="btn2">右侧出</button>
+    <button id="btn3">左侧入</button>
+    <button id="btn4">右侧入</button>
+    <button id="btnsort">排序</button>
+    <input type="text" id="search">
+    <button id="btnsearch">查询</button>
+</div>
+<div id="img"></div>
+<script>
+    var num = document.getElementById("in");       //输入框
+    var block = document.getElementById("img");    //放置图表的div
+    var numarray = [];                             //收集输入的值
+    var btnone = document.getElementById("btn1");
+    var btntwo = document.getElementById("btn2");
+    var btnthree = document.getElementById("btn3");
+    var btnfour = document.getElementById("btn4");
+    var btns = document.getElementById("btnsort");
+    var btnsea = document.getElementById("btnsearch");
+
+    var newbox;
+    var text;
+    /*添加节点*/
+    function addnode(data) {
+        newbox = document.createElement("div");
+        newbox.className = "boxstyle";
+        newbox.style.height = parseInt(data) + 30 + "px";
+        text = document.createElement("p");
+        text.className = "pstyle";
+        text.innerText = data;
+        newbox.appendChild(text);
+    }
+    /*判断输入是否合理*/
+    function judge() {
+        var arr = num.value.split(/[,.，;；、\s]+/g);
+        if(block.childNodes.length + arr.length > 59){
+            alert("最多输入60个数据！");
+        }
+        else {
+            arr.forEach(function (p1, p2, p3) {
+                numarray.push(p1);
+            });
+            return arr;
+        }
+    }
+    /*排序*/
+    var numsort = function () {
+        function sortdata(a,b) {
+            return a-b;
+        }
+        numarray.sort(sortdata);
+        block.innerHTML="";
+        for(var i=0;i<numarray.length;i++){
+            newbox = document.createElement("div");
+            newbox.className = "boxstyle";
+            newbox.style.height = parseInt(numarray[i]) + 30 + "px";
+            text = document.createElement("p");
+            text.className = "pstyle";
+            text.innerText = numarray[i];
+            newbox.appendChild(text);
+            block.appendChild(newbox);
+        }
+    }
+    function find() {
+        var items = block.childNodes;
+        var text = document.getElementById("search").value;
+        var left = "<span class=\"mark\">", right = "</span>";
+        var left_exp = /<span class=\"mark\">/g, right_exp = /<\/span>/g;
+        var str, newStr;
+
+        for (var i = 0; i < items.length; i++) {
+
+            // 清除上一次匹配的痕迹
+            str = items[i].innerHTML.replace(left_exp, "");
+            str = str.replace(right_exp, "");
+
+            newStr = str.split(text).join(left + text + right);
+            items[i].innerHTML = newStr;
+        }
+    }
+    /*按钮监听*/
+    btnone.addEventListener("click",function () {
+        alert("即将删除："+block.firstChild.innerText);
+        block.removeChild(block.firstChild);
+    });
+    btntwo.addEventListener("click",function () {
+        alert("即将删除："+block.lastChild.innerText);
+        block.removeChild(block.lastChild);
+    });
+    btnthree.addEventListener("click",function () {
+        var arr = judge();
+        if(arr){
+            arr.forEach(function (p1, p2, p3) {
+                addnode(p1);
+                block.insertBefore(newbox,block.childNodes[0]);
+            });
+        }
+    });
+    btnfour.addEventListener("click",function () {
+        var arr = judge();
+        if(arr){
+            arr.forEach(function (p1, p2, p3) {
+                addnode(p1);
+                block.appendChild(newbox);
+            });
+        }
+    });
+    /*排序按钮*/
+    btns.addEventListener("click",numsort);
+    /*查询按钮*/
+    btnsea.addEventListener("click",find);
+
+    /*点击自身删除*/
+    block.addEventListener("click",function (event) {
+        if(event.target.nodeName.toLowerCase() == "p"){
+            block.removeChild(event.target.parentNode);
+        }
+        if(event.target.nodeName.toLowerCase() == "div"){
+            block.removeChild(event.target);
+        }
+    });
+
+
+</script>
+</body>
+</html>
+<!--
+ <div class="container">
+        <div class="control">
+            <input type="text" id="search" placeholder="输入想要查询的内容">
+            <a href="#!" class="btn" id="find">搜索</a>
+            <a href="#!" class="btn" id="sort" title="从低到高">排序</a>
+            <a href="#!" class="btn" id="clear">清空</a>
+            <a href="#!" class="btn" id="init">初始化</a>
+        </div>
+        <div class="control">
+            <textarea name="" id="data" cols="15" rows="5" placeholder="输入想要插入的数据" title="允许数字、中文、英文，可通过用回车，逗号，顿号，空格等符号作为间隔"></textarea>
+            <a href="#!" class="btn" id="left-in">左侧入</a>
+            <a href="#!" class="btn" id="right-in">右侧入</a>
+            <a href="#!" class="btn" id="left-out">左侧出</a>
+            <a href="#!" class="btn" id="right-out">右侧出</a>
+        </div>
+        <div class="divider"></div>
+        <div class="panel" id="panel"></div>
+</div>
+-->

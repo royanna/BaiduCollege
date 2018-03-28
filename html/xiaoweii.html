@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-3.2.1.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: black;
+        }
+        a{
+            text-decoration: none;
+        }
+        ul{
+            list-style: none;
+        }
+        .clearfix:before,.clearfix:after{
+            content: '';
+            display: table;
+        }
+        .clearfix:after{
+            clear: both;
+        }
+        nav{
+            background: #2189c0;
+            width: 90%;
+            height: 50px;
+            margin: 0 auto;
+        }
+        .container{
+            width: 90%;
+            margin: 0 auto;
+        }
+        /*左侧开始*/
+        .container .personal{
+            width: 220px;
+            height: 900px;
+            float: left;
+            margin: 0 0;
+            background: #2b2e3d;
+        }
+        .container .personal p{
+            color: #6b7c8e;
+        }
+        .container .personal .personal-info{
+            width: 100%;
+            height: 150px;
+        }
+        .container .personal .personal-info .photo{
+            width: 120px;
+            height: 50px;
+            margin: 7px auto;
+            background: url("../image/p.png") no-repeat left;
+        }
+        .container .personal .personal-info ul{
+            width: 120px;
+            margin: 20px auto;
+        }
+        .container .personal .personal-info ul li{
+            float: left;
+            width: 49%;
+            text-align: center;
+
+        }
+        .container .personal .personal-info ul li:first-child{
+            border-right: 1px solid #888888;
+        }
+        .container .personal .personal-info ul li:last-child{
+
+        }
+        .container .personal .else-info{
+            padding: 10px 40px;
+        }
+        .else-info dt,.else-info dd{
+            margin-left: 15px;
+            background: url("../image/file-icon.png") no-repeat left;
+        }
+        .else-info dd{
+            margin-left: 30px;
+        }
+        .else-info dt p,.else-info dd p{
+            margin-left: 16px;
+        }
+        .container .personal .else-info .else{
+            margin-top: 28px;
+            background: url("../image/file-icon.png") no-repeat left;
+        }
+        .container .personal .else-info p{
+            font-size: small;
+        }
+        .container .personal .else-info dl{
+            display: none;
+        }
+        /*右侧开始*/
+        #main{
+            width: 993px;
+            height: 1000px;
+            float: left;
+            background: #ededed;
+        }
+        #main .main-head{
+            height: 30px;
+            background: #ffffff;
+        }
+        #main .search{
+            position: relative;
+            width: 880px;
+            height: 60px;
+            margin: 20px auto;
+            padding: 20px 10px;
+            font-size: small;
+            color: grey;
+            background: #ffffff;
+        }
+        #main .search .search-block{
+            margin-left: 28px;
+        }
+        #main .search div{
+            float: left;
+        }
+        .search .select-one,.search .select-two,.search .select-three{
+            float:right;
+            margin-left: 18px;
+        }
+        .select-two,.select-three,.select-seven{
+            width: 110px;
+        }
+        .search button{
+            margin-top: 20px;
+            background: #2b669a;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 20px;
+        }
+        #move{
+            width: 900px;
+            height: 60px;
+            margin: 5px auto;
+        }
+        #move div{
+            float: left;
+            background: #ffffff;
+            border: 1px solid #9d9d9d;
+        }
+        #move .move-left,#move .move-right{
+            width: 30px;
+            height: 60px;
+            background: url("../image/arrow-right.png") no-repeat center #ffffff;
+        }
+        #move .move-right{
+            margin-left: 10px;
+        }
+        #move .move-block{
+            width: 100px;
+            height: 60px;
+            text-align: center;
+            margin-left: 10px;
+        }
+        #move .move-block:hover{
+            border-top: 2px solid #2b669a;
+        }
+        #move .move-block p{
+            margin-top: 10px;
+            font-size: small;
+        }
+        #move .move-block h3{
+            color: red;
+        }
+        #move .move-block h3 span{
+            color: grey;
+            font-size: medium;
+        }
+        #move .history{
+            width: 120px;
+            height: 60px;
+            float: right;
+        }
+        #bodyone,#bodyfour{
+            width: 500px;
+            height: 300px;
+            border: 1px solid #9d9d9d;
+            margin: 12px 46px;
+            border-radius: 8px;
+            background: #ffffff;
+        }
+        #bodyone .bodyone-head,#bodyfour .bodyfour-head{
+            width: 100%;
+            height: 40px;
+            border-radius: 8px;
+            background: #f4f5f7;
+            color: grey;
+            font: 12px "宋体";
+            line-height: 40px;
+        }
+        #bodyone .bodyone-contain{
+            width: 90%;
+            height: 230px;
+            margin: 10px auto;
+        }
+        #bodyone .bodyone-contain .li{
+            float: left;
+            width: 80px;
+            height: 24px;
+            font: 14px "宋体";
+            text-align: center;
+            line-height: 24px;
+            margin-left: 3px;
+            background: #ededef;
+        }
+        #bodyone .bodyone-contain .ul-tone{
+            border: 1px solid #8c8c8c;
+            margin-top: 5px;
+            height: 170px;
+            padding: 20px 50px;
+        }
+        #bodyone .bodyone-contain #table2{
+            position: absolute;
+            top: 390px;
+            left: 410px;
+            display: none;
+        }
+        #bodyone .bodyone-contain .ul-tone table{
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        #bodyone .bodyone-contain .ul-tone table td{
+            border: 1px solid grey;
+            padding: 6px 12px;
+            font: 12px "宋体";
+        }
+        #bodyfour table{
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin: 5px auto;
+        }
+        #bodyfour table td{
+            text-align: center;
+            padding: 3px 28px;
+            font: small "宋体";
+            color: grey;
+            border: 1px solid #9d9d9d;
+        }
+        #bodyfour table td progress{
+            height: 3px;
+            border: none;
+           /* background:orange;*/
+            color: orange;
+        }
+        progress::-webkit-progress-bar
+
+        {
+            background:orange;
+        }
+
+        progress::-webkit-progress-value,
+        progress::-moz-progress-bar
+        {
+            background:orange;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $(".li").mousedown(function (){
+                $("#table2").css("display","table");
+                $("#table1").css("display","none");
+                $(this).css({
+                    "background":"#ffffff",
+                    "border-top":"1px solid #8c8c8c",
+                    "border-left":"1px solid #8c8c8c",
+                    "border-right":"1px solid #8c8c8c",
+                    "border-bottom":"1px solid #ffffff"
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<nav>
+</nav>
+<div class="container clearfix">
+    <!--左边栏-->
+    <div class="personal">
+        <!--左边栏头像部分-->
+        <div class="personal-info">
+            <div class="photo"><p style="float: right;line-height: 50px;">ABC123</p></div>
+            <ul class="clearfix">
+                <li><p>110<br>收藏</p></li>
+                <li><p>313<br>粉丝</p></li>
+            </ul>
+        </div>
+        <!--左边栏其他信息-->
+        <div class="else-info">
+            <div class="else" style="margin-top: 5px"><p style="margin-left: 16px">个人报表</p></div>
+            <dl>
+                <dt><p>文件一</p></dt>
+                    <dd><p>文档一</p></dd>
+                    <dd><p>文档二</p></dd>
+                <dt><p>文件二</p></dt>
+                    <dd><p>文档三</p></dd>
+                <dt><p>文件三</p></dt>
+                    <dd><p>文档四</p></dd>
+            </dl>
+            <div class="else"><p style="margin-left: 16px">个人收藏</p></div>
+            <div class="else"><p style="margin-left: 16px">我的分享</p></div>
+            <div class="else"><p style="margin-left: 16px">图库</p></div>
+            <div class="else"><p style="margin-left: 16px">成长记录</p></div>
+            <div class="else"><p style="margin-left: 16px">账户信息</p></div>
+        </div>
+    </div>
+    <!--右侧主体部分-->
+    <div id="main">
+        <!--头部-->
+        <div class="main-head"></div>
+        <!--搜索域-->
+        <div class="search clearfix">
+            <!--搜索域第一块-->
+            <div class="search-one search-block">
+                <p style="float: left">查询项</p>
+                <select class="select-one">
+                    <option value="first">第一项</option>
+                    <option value="second">第二项</option>
+                </select>
+            </div>
+            <!--搜索域第二块-->
+            <div class="search-two search-block">
+                <div>
+                    <p style="float: left">买方</p>
+                    <select class="select-two">
+                        <option value="">小A</option>
+                    </select>
+                </div>
+                <br>
+               <div style="margin-top: 10px">
+                   <p style="float: left">卖方</p>
+                   <select class="select-three">
+                       <option value="">小B</option>
+                   </select>
+               </div>
+
+            </div>
+            <!--搜索域第三块-->
+            <div class="search-three search-block">
+                <div>
+                    <p style="float: left">日期</p>
+                    <input type="text" placeholder="2016-04-01" style="float: left;width: 118px">
+                    <p style="float: left;margin-left: 10px">总耗时</p>
+                    <select class="select-five" style="float: left;width: 60px">
+                        <option value="">8天</option>
+                    </select>
+                </div>
+                <br>
+                <div style="margin-top: 10px">
+                    <p style="float: left">人数</p>
+                    <select class="select-six" style="float: left;width: 70px">
+                        <option value="">10人</option>
+                    </select>
+                    <p style="float: left;margin-left: 10px">成交项</p>
+                    <select class="select-seven" style="float: left">
+                        <option value="">10项</option>
+                    </select>
+                </div>
+            </div>
+            <!--搜索域第四块-->
+            <div class="search-four search-block">
+                <button type="submit">搜索</button>
+            </div>
+        </div>
+        <!--搜索域结束-->
+        <!--滑动域开始-->
+        <div id="move" class="clearfix">
+            <div class="move-left"></div>
+            <div class="move-block">
+                <p>10:00 <span>am</span></p>
+                <h3><span>￥</span>1200</h3>
+            </div>
+            <div class="move-block">
+                <p>10:00 <span>am</span></p>
+                <h3><span>￥</span>1200</h3>
+            </div>
+            <div class="move-block">
+                <p>10:00 <span>am</span></p>
+                <h3><span>￥</span>1200</h3>
+            </div>
+            <div class="move-block">
+                <p>10:00 <span>am</span></p>
+                <h3><span>￥</span>1200</h3>
+            </div>
+            <div class="move-block">
+                <p>10:00 <span>am</span></p>
+                <h3><span>￥</span>1200</h3>
+            </div>
+            <div class="move-block">
+                <p>10:00 <span>am</span></p>
+                <h3><span>￥</span>1200</h3>
+            </div>
+            <div class="move-right"></div>
+            <div class="history">
+                <p style="line-height: 60px;text-align: center">历史查询</p>
+            </div>
+        </div>
+        <!--滑动域结束-->
+        <!--第一块表格开始-->
+        <div id="bodyone">
+            <div class="bodyone-head"><p style="padding-left: 20px">第一组项目</p></div>
+            <div class="bodyone-contain">
+                <ul>
+                    <li class="li">项目一</li>
+                    <li class="li">项目二</li>
+                    <li class="li">项目三</li>
+                    <li class="li">项目四</li>
+                    <li class="li">项目五</li>
+                </ul>
+                <br>
+                <ul class="ul-tone">
+                    <li id="table1" style="display: table">
+                       <table>
+                           <tr>
+                               <td>购买材料一</td>
+                               <td>购买材料一</td>
+                               <td>购买材料一</td>
+                               <td>购买材料一</td>
+                           </tr>
+                           <tr>
+                               <td>购买材料一</td>
+                               <td>购买材料一</td>
+                               <td>购买材料一</td>
+                               <td>购买材料一</td>
+                           </tr>
+                           <tr>
+                               <td>购买材料一</td>
+                               <td>购买材料一</td>
+                               <td>购买材料一</td>
+                               <td>购买材料一</td>
+                           </tr>
+                           <tr>
+                               <td>购买材料一</td>
+                               <td>购买材料一</td>
+                               <td>购买材料一</td>
+                               <td>购买材料一</td>
+                           </tr>
+                           <tr>
+                               <td>购买材料一</td>
+                               <td>购买材料一</td>
+                               <td>购买材料一</td>
+                               <td>购买材料一</td>
+                           </tr>
+                           <tr>
+                               <td>购买材料一</td>
+                               <td>购买材料一</td>
+                               <td>购买材料一</td>
+                               <td>购买材料一</td>
+                           </tr>
+                       </table>
+                    </li>
+                    <li class="litwo" id="table2">
+                        <table>
+                            <tr>
+                                <td>购买材料二</td>
+                                <td>购买材料二</td>
+                                <td>购买材料二</td>
+                                <td>购买材料二</td>
+                            </tr>
+                            <tr>
+                                <td>购买材料二</td>
+                                <td>购买材料二</td>
+                                <td>购买材料二</td>
+                                <td>购买材料二</td>
+                            </tr>
+                            <tr>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                            </tr>
+                            <tr>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                            </tr>
+                            <tr>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                            </tr>
+                            <tr>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <!--第一块表格结束-->
+        <!--第四块表格开始-->
+        <div id="bodyfour">
+            <div class="bodyfour-head"><p style="padding-left: 20px">汽车行业品牌榜</p></div>
+            <table>
+                <tr>
+                    <td>排名</td>
+                    <td>品牌</td>
+                    <td>搜索指数</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>大众</td>
+                    <td>
+                        <span>48912001</span>
+                        <progress value="80" max="100"></progress>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>丰田</td>
+                    <td>
+                        <span>48912001</span>
+                        <progress value="70" max="100"></progress>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>奥迪</td>
+                    <td>
+                        <span>48912001</span>
+                        <progress value="60" max="100"></progress>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>本田</td>
+                    <td>
+                        <span>48912001</span>
+                        <progress value="50" max="100"></progress>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>福特</td>
+                    <td>
+                        <span>48912001</span>
+                        <progress value="40" max="100"></progress>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>宝马</td>
+                    <td>
+                        <span>48912001</span>
+                        <progress value="30" max="100"></progress>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>现代</td>
+                    <td>
+                        <span>48912001</span>
+                        <progress value="20" max="100"></progress>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>起亚</td>
+                    <td>
+                        <span>48912001</span>
+                        <progress value="10" max="100"></progress>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>奔驰</td>
+                    <td>
+                        <span>48912001</span>
+                        <progress value="10" max="100"></progress>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>别克</td>
+                    <td>
+                        <span>48912001</span>
+                        <progress value="10" max="100"></progress>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!--第四块表格结束-->
+    </div>
+</div>
+</body>
+</html>

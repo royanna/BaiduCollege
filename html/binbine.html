@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #img{
+            width: 900px;
+            height: 150px;
+            display: flex;
+            align-items: flex-end;
+        }
+        .boxstyle{
+            width: 20px;
+            background-color: #f0ad4e;
+            float: left;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="measure">
+    <input id="in" type="text">
+    <button id="btn1">左侧出</button>
+    <button id="btn2">右侧出</button>
+    <button id="btn3">左侧入</button>
+    <button id="btn4">右侧入</button>
+    <button id="btnsort">排序</button>
+</div>
+<div id="img"></div>
+<script>
+var num = document.getElementById("in");       //输入框
+var block = document.getElementById("img");    //放置图表的div
+var numarray = [];                             //收集输入的值
+var btnone = document.getElementById("btn1");
+var btntwo = document.getElementById("btn2");
+var btnthree = document.getElementById("btn3");
+var btnfour = document.getElementById("btn4");
+var btns = document.getElementById("btnsort");
+
+var newbox;
+var text;
+function addnode() {
+    newbox = document.createElement("div");
+    newbox.className = "boxstyle";
+    newbox.style.height = num.value + "px";
+    text = document.createElement("p");
+    text.innerText = num.value;
+    newbox.appendChild(text);
+}
+/*判断输入是否合理*/
+function judge(data) {
+    if(isNaN(data)){
+        alert("请输入数字！");
+    }
+    else if(data<10 || data>100){
+        alert("请输入10-100之间数字！");
+    }
+    else if(block.childNodes.length>59){
+        alert("最多输入60个数据！");
+    }
+    else {
+        numarray.push(num.value);
+        return true;
+    }
+}
+btnone.addEventListener("click",function () {
+    alert("即将删除："+block.firstChild.innerText);
+    block.removeChild(block.firstChild);
+});
+btntwo.addEventListener("click",function () {
+    alert("即将删除："+block.lastChild.innerText);
+    block.removeChild(block.lastChild);
+});
+btnthree.addEventListener("click",function () {
+    if(judge(num.value)){
+        addnode();
+        block.insertBefore(newbox,block.childNodes[0]);
+    }
+});
+btnfour.addEventListener("click",function () {
+    if(judge(num.value)){
+        addnode();
+        block.appendChild(newbox);
+    }
+});
+/*点击自身删除*/
+block.addEventListener("click",function (event) {
+   if(event.target.nodeName.toLowerCase() == "p"){
+       block.removeChild(event.target.parentNode);
+   }
+   if(event.target.nodeName.toLowerCase() == "div"){
+       block.removeChild(event.target);
+   }
+});
+/*排序*/
+var numsort = function () {
+    function sortdata(a,b) {
+        return a-b;
+    }
+    numarray.sort(sortdata);
+    block.innerHTML="";
+    for(var i=0;i<numarray.length;i++){
+        newbox = document.createElement("div");
+        newbox.className = "boxstyle";
+        newbox.style.height = numarray[i] + "px";
+        text = document.createElement("p");
+        text.innerText = numarray[i];
+        newbox.appendChild(text);
+        block.appendChild(newbox);
+    }
+}
+btns.addEventListener("click",numsort);
+</script>
+</body>
+</html>
